@@ -1,6 +1,7 @@
 # Advisor Dashboard Backend
 
 http://localhost:3001/swagger
+
 This is the backend service for the Advisor Dashboard application. It is built with TypeScript, Express, and Prisma, and is containerized using Docker. The API documentation is available via Swagger.
 
 ## Prerequisites
