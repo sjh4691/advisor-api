@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.docker.env
+
+# Logs
+logs
+*.log
+
+# Build artifacts
+dist/
+build/
+
+# Docker
+docker-compose.override.yml

@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---- MODELS -----//
+
+model Advisor {
+  id      Int      @id @default(autoincrement())
+  name    String
+  clients Client[]
+}
+
+model Client {
+  id        Int       @id @default(autoincrement())
+  name      String
+  advisor   Advisor   @relation(fields: [advisorId], references: [id])
+  advisorId Int
+  accounts  Account[]
+}
+
+model Custodian {
+  id       Int       @id @default(autoincrement())
+  name     String
+  repId    String
+  accounts Account[]
+}
+
+// TODO - type account type as an Enum? 
+model Account {
+  id          Int       @id @default(autoincrement())
+  name        String
+  number      String
+  repId       String
+  accountType String
+  client      Client    @relation(fields: [clientId], references: [id])
+  clientId    Int
+  custodian   Custodian @relation(fields: [custodianId], references: [id])
+  custodianId Int
+  holdings    Holding[]
+
+  @@unique([custodianId, number])
+}
+
+model Holding {
+  id           Int      @id @default(autoincrement())
+  units        Float
+  purchaseDate DateTime
+  account      Account  @relation(fields: [accountId], references: [id])
+  accountId    Int
+  security     Security @relation(fields: [securityId], references: [id])
+  securityId   Int
+}
+
+model Security {
+  id       Int       @id @default(autoincrement())
+  ticker   String    @unique
+  name     String
+  price    Float
+  isin     String?   @unique
+  cusip    String?   @unique
+  holdings Holding[]
+}
