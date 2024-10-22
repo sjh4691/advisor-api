@@ -1,9 +1,8 @@
 # Node modules
 node_modules/
 
-# Environment variables
-.env
-.docker.env
+# Environment variables 
+# TODO - add env here and move contents to secrets manager or local env
 
 # Logs
 logs

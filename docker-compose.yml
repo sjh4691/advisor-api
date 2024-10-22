@@ -1,3 +1,4 @@
+# TODO - create compose for api and add Dockerfile to generate and run production build
 services:
   db:
     image: postgres:17
@@ -11,21 +12,6 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
-    networks:
-      - advisor-network
-
-  api:
-    build:
-      context: .
-    container_name: advisor-api
-    restart: unless-stopped
-    ports:
-      - "3001:3001"
-    environment:
-      DATABASE_URL: "postgresql://postgres:postgres@db:5432/advisordb?schema=public"
-      NODE_ENV: development
-    depends_on:
-      - db
     networks:
       - advisor-network
 
