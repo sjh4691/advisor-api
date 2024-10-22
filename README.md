@@ -38,5 +38,5 @@ yarn prisma:seed
 ### 4. Start the Server
 
 ```bash
-yarn start
+yarn dev
 ```
