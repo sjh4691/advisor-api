@@ -10,26 +10,19 @@ This project is the backend for the Advisor Dashboard application. It is built w
 
 ## Setup
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/advisor-dashboard-backend.git
-cd advisor-dashboard-backend
-```
-
-### 2. Install Dependencies
+### 1. Install Dependencies
 
 ```bash
 yarn install
 ```
 
-### 3. Run the Database
+### 2. Run the Database
 
 ```bash
 docker-compose up -d db
 ```
 
-### 4. Run Migrations and Seed Data
+### 3. Run Migrations and Seed Data
 
 ```bash
 yarn prisma:migrate
@@ -42,7 +35,7 @@ Optional:
 yarn prisma:seed
 ```
 
-### 5. Start the Server
+### 4. Start the Server
 
 ```bash
 yarn start
