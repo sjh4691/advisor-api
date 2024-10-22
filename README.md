@@ -33,7 +33,13 @@ docker-compose up -d db
 
 ```bash
 yarn prisma:migrate
-yarn prisma:seed (optional)
+yarn prisma:seed
+```
+
+Optional:
+
+```bash
+yarn prisma:seed
 ```
 
 ### 5. Start the Server
