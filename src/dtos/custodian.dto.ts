@@ -1,9 +1,5 @@
-export interface CustodianAdvisorDto {
+export interface CustodianAumDto {
+  custodian_id: number;
   custodian_name: string;
-  advisors: AdvisorAum[];
-}
-
-export interface AdvisorAum {
-  advisor_name: string;
   total_aum: number;
 }

@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-import { getTopSecurities } from "../services/securityService";
-import { TopSecuritiesDto } from "../dtos";
+import { getMostHeldSecurities } from "../services/securitiesService";
 
 export const getTopSecuritiesHeld = async (req: Request, res: Response) => {
   try {
     const top = req.query.top ? parseInt(req.query.top as string, 10) : 10;
-    const topSecurities: TopSecuritiesDto[] = await getTopSecurities(top);
+    const topSecurities = await getMostHeldSecurities(top);
     res.json(topSecurities);
   } catch (error) {
     console.error(error);

@@ -1,14 +1,9 @@
 import { Request, Response } from "express";
-import { getCustodianAdvisorAssets } from "../services/custodianService";
-import { CustodianAdvisorDto } from "../dtos";
+import { getTotalCustodianAum as fetchTotalCustodianAum } from "../services/custodianService";
 
-export const getCustodianAdvisorAssetsList = async (
-  req: Request,
-  res: Response
-) => {
+export const getTotalCustodianAum = async (req: Request, res: Response) => {
   try {
-    const custodianAssets: CustodianAdvisorDto[] =
-      await getCustodianAdvisorAssets();
+    const custodianAssets = await fetchTotalCustodianAum();
     res.json(custodianAssets);
   } catch (error) {
     console.error(error);

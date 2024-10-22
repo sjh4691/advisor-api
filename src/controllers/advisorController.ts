@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import {
-  getTotalAum,
   getAumByAdvisor,
   getAllAdvisors,
+  getAdvisorSummary as fetchAdvisorSummary,
 } from "../services/advisorService";
 
 export const getAdvisors = async (req: Request, res: Response) => {
@@ -15,16 +15,6 @@ export const getAdvisors = async (req: Request, res: Response) => {
   }
 };
 
-export const getAum = async (req: Request, res: Response) => {
-  try {
-    const totalAUM = await getTotalAum();
-    res.json(totalAUM);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to fetch total AUM" });
-  }
-};
-
 export const getAumByAdvisorId = async (req: Request, res: Response) => {
   const advisorId = Number(req.params.advisorId);
   try {
@@ -33,5 +23,15 @@ export const getAumByAdvisorId = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to fetch advisor AUM" });
+  }
+};
+
+export const getAdvisorSummary = async (req: Request, res: Response) => {
+  try {
+    const advisorSummary = await fetchAdvisorSummary();
+    res.json(advisorSummary);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch advisor summary" });
   }
 };

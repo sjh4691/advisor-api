@@ -1,17 +1,18 @@
 import { Router } from "express";
-import { getCustodianAdvisorAssetsList } from "../controllers/custodianController";
+import { getTotalCustodianAum } from "../controllers/custodianController";
 
 const router = Router();
 
 /**
  * @swagger
- * /custodians/advisor-assets:
+ * /custodians/aum:
  *   get:
- *     summary: Retrieve a list of custodian advisor assets
+ *     summary: Retrieve a list of custodians and their total AUM across all advisors
+ *     tags: [Custodian]
  *     responses:
  *       200:
- *         description: A list of custodian advisor assets
+ *         description: A list of custodians and their AUM across all advisors
  */
-router.get("/advisor-assets", getCustodianAdvisorAssetsList);
+router.get("/aum", getTotalCustodianAum);
 
 export default router;
