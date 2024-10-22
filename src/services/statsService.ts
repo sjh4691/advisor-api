@@ -6,6 +6,5 @@ export const getTotalManagedAum = async (): Promise<number> => {
         FROM "Holding" h
         JOIN "Security" s ON h."securityId" = s.id
       `;
-
   return result[0]?.total_aum || 0;
 };

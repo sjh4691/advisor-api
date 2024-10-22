@@ -1,6 +1,6 @@
 import { Router } from "express";
 import advisorRoutes from "./advisorRoutes";
-import statsRoutes from "./securitiesRoutes";
+import statsRoutes from "./statsRoutes";
 import custodianRoutes from "./custodianRoutes";
 import securitiesRoutes from "./securitiesRoutes";
 
